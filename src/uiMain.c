@@ -3,14 +3,15 @@
 #include "tokenizer.h"
 #include "history.h"
 
-int main()
-{
+int main(){
+  
   char string[100];
   int choice;
   List *history = init_history();
   int numHistory;
-  char *stringHistory;
-  char specificString[100];
+  char *specificString;
+  int temp;
+  //  char specificString[100];
 
   printf("Welcome to my tokenizer!\n");
   
@@ -35,18 +36,18 @@ int main()
       char **tokens = tokenize(string);
       printf("\n");
       print_tokens(tokens);
-      add_history(history, *tokens);
+      add_history(history, string);
+      free_tokens(tokens);
       break;
     case 2:
-      //specificString = get_history(history,int(string[1]));
-      printf("Item in [%c]: ",&string);
-      //printf("%c\n", specificString);
-      
+      temp = string[1] - '0';
+      specificString = get_history(history,temp);
+      printf("Item in [%c]: ",*(string+1));
+      printf("%s\n", specificString);      
       break;
     case 3:
       print_history(history);
       free_history(history);
-      printf("All the history is free!\n");
       break;
     case 4:
       printf("Thank you. Goodbye!\n");

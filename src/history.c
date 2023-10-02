@@ -75,7 +75,7 @@ void print_history(List *list) {
     return;
   }
   Item *current = list->head;
-  while (current != NULL) {\
+  while (current != NULL) {
     printf("Item %d: %s\n", current->id, current->str);
     current = current->next;
   }

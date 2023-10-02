@@ -102,6 +102,5 @@ int word_length(char *str) {
     length++;
     str++;
   }
-  printf("%d\n",&length);
   return length;
 }
