@@ -72,7 +72,6 @@ char *get_history(List *list, int id) {
 void print_history(List *list) {
   if (list == NULL || list->head == NULL) {
     printf("History is empty.\n");
-    return;
   }
   Item *current = list->head;
   while (current != NULL) {
