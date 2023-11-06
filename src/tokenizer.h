@@ -46,6 +46,6 @@ void free_tokens(char **tokens);
 
 // Menu
 
-int menuOpt(char *str);
+int menuOpt(char *str,int x);
 
 #endif
