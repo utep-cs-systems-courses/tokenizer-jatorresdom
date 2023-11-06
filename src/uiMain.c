@@ -36,15 +36,22 @@ int main(){
       char **tokens = tokenize(string);
       printf("\n");
       print_tokens(tokens);
-      add_history(history, string);
+      for (int i = 0; tokens[i] !=NULL; i++){
+	add_history(history, tokens[i]);
+      }
       free_tokens(tokens);
       break;
     case 2:
       temp = string[1] - '0';
       specificString = get_history(history,temp);
-      printf("Item in [%c]: ",*(string+1));
-      printf("%s\n", specificString);      
-      break;
+      if (specificString != NULL){
+	printf("Item in [%c]: ",*(string+1));
+	printf("%s\n", specificString);
+      }
+      else{
+	printf("That index is empty \n");
+      }
+	break;
     case 3:
       print_history(history);
       free_history(history);
