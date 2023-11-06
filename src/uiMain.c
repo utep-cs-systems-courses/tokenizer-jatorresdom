@@ -26,7 +26,7 @@ int main(){
 
     //Ask for an input
     fgets(string,100,stdin);
-    choice = menuOpt(string);
+    choice = menuOpt(string,0);
 
     //Switch to decide what to do
     switch (choice) {
@@ -36,8 +36,24 @@ int main(){
       char **tokens = tokenize(string);
       printf("\n");
       print_tokens(tokens);
-      for (int i = 0; tokens[i] !=NULL; i++){
-	add_history(history, tokens[i]);
+      choice = -1;
+      while(choice != 1 && choice != 2){
+	printf("Please enter 'w' to save each word or 's' to save the whole string in the history: ");
+	fgets(string,100,stdin);
+	choice = menuOpt(string,1);
+	switch (choice) {
+	case 1:
+	  add_history(history,string);
+	  break;
+	case 2:
+	  for (int i = 0; tokens[i] !=NULL; i++){
+	    add_history(history, tokens[i]);
+	  }
+	  break;
+	default:
+	  printf("Invalid input Please try again.\n");
+	  break;
+	}
       }
       free_tokens(tokens);
       break;
