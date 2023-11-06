@@ -78,20 +78,33 @@ void free_tokens(char **tokens) {
   free(tokens);
 }
 
-int menuOpt(char *str){
+int menuOpt(char *str, int x){
 
-  if (str == NULL || *str == '\0') {
-    return 0; // Input is null or empty
-  } else if (*str == '!' && *(str + 1) == 'h') {
-    return 3; // "!h" maps to 3
-  } else if (*str == 't') {
-    return 1; // 't' and '1' both map to 1
-  } else if (*str == 'q') {
-    return 4; // 'q' maps to 4
-  } else if (*str == '!' && isdigit(*(str + 1))) {
-    return 2; // '!1', '!2', etc. map to 2
-  } else {
-    return -1; // No valid option found
+  if (x == 0){
+    if (str == NULL || *str == '\0') {
+      return 0; // Input is null or empty
+    } else if (*str == '!' && *(str + 1) == 'h') {
+      return 3; // "!h" maps to 3
+    } else if (*str == 't') {
+      return 1; // 't' and '1' both map to 1
+    } else if (*str == 'q') {
+      return 4; // 'q' maps to 4
+    } else if (*str == '!' && isdigit(*(str + 1))) {
+      return 2; // '!1', '!2', etc. map to 2
+    } else {
+      return -1; // No valid option found
+    }
+  }
+  else{
+    if (*str == 's' ){
+      return 1; // If s is to tokenize strings
+    }
+    else if (*str == 'w') {
+      return 2; // if w to tokineze words
+    }
+    else{
+      return -1; // If it's not w or s
+    }
   }
 }
 
